@@ -11,7 +11,7 @@ foo099 -> foo100
 
 Attention: If the number has leading zeros the amount of digits should be considered.*/
 
-/*First sollusion*/
+/*First solution*/
 def increment_string(strng):
     a = int()
     strint_new = int()
@@ -41,7 +41,7 @@ def increment_string(strng):
         strng = strng + "1"
     return strng
    
-   /*Second sollusion*/
+   /*Second solution*/
    def increment_string(strng):
     start = strng.rstrip('0123456789')
     end = strng[len(start):]
