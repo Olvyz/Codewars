@@ -1,0 +1,14 @@
+/*Given an array of integers, find the one that appears an odd number of times.
+There will always be only one integer that appears an odd number of times.*/
+
+def find_it(seq):
+    dict = {}
+    count = 1
+    for i in seq:
+        if i in dict:
+            dict[i] += count 
+        else:
+            dict[i] = count
+    for k, v in dict.items():
+        if dict[k]%2 != 0:
+            return k
