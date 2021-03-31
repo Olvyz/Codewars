@@ -1,0 +1,51 @@
+/*Your job is to write a function which increments a string, to create a new string.
+If the string already ends with a number, the number should be incremented by 1.
+If the string does not end with a number. the number 1 should be appended to the new string.
+Examples:
+
+foo -> foo1
+foobar23 -> foobar24
+foo0042 -> foo0043
+foo9 -> foo10
+foo099 -> foo100
+
+Attention: If the number has leading zeros the amount of digits should be considered.*/
+
+/*First sollusion*/
+def increment_string(strng):
+    a = int()
+    strint_new = int()
+    strint_new_str = ""
+    strint = ""
+    arrint = []
+    strng_arr = []
+    if strng.isdigit():
+        strint = strng
+    else:
+        for i in strng:
+            strng_arr.append(i)
+        strng_arr.reverse()
+        for i in strng_arr:
+            if not i.isdigit():
+                a = strng_arr.index(i)
+                break
+        for i in strng_arr[0:a]:
+            arrint.append(i)
+        arrint.reverse()
+        strint = strint.join(arrint)
+    if len(strint) > 0:
+        strint_new = int(strint.strip())+int(1)
+        strint_new_str = str(strint_new)
+        strng = strng.replace(strint, strint_new_str.zfill(len(strint)))
+    else:
+        strng = strng + "1"
+    return strng
+   
+   /*Second sollusion*/
+   def increment_string(strng):
+    start = strng.rstrip('0123456789')
+    end = strng[len(start):]
+    if end == "": 
+        return strng+"1"
+    else:
+        return start + str(int(end) + 1).zfill(len(end))
