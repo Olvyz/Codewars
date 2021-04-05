@@ -37,3 +37,20 @@ def next_smaller(n):
         return new_arr[n_index+1]
     else:
         return -1
+        
+ /************************/
+ def permute(str):
+    if len(str)<= 1:
+        yield str
+    else:
+        for perms in permute(str[1:]):
+            for i in range(len(perms)+1):
+                yield perms[:i] + str[0:1] + perms[i:] 
+                
+def next_smaller(n):
+    perms = [int(x) for x in set(permute(str(n))) if int(x) <= n]
+    perms.sort(reverse = True)
+    if perms.index(n)+1 in range(len(perms)):
+        return perms[perms.index(n)+1]
+    else:
+        return(-1)
